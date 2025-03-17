@@ -56,7 +56,7 @@ pipeline {
                     if (verificacionUsuario != 0) {
                         error "Error al crear el usuario '${params.LOGIN}'. Saliendo..."
                     }
-                    echo "✅ Usuario '${params.LOGIN}' creado con éxito."
+                    echo "Usuario '${params.LOGIN}' creado con éxito."
                 }
             }
         }
@@ -67,7 +67,7 @@ pipeline {
                     def PASSWORD = sh(script: "openssl rand -base64 12", returnStdout: true).trim()
                     sh "echo '${params.LOGIN}:${PASSWORD}' | sudo chpasswd"
                     sh "sudo passwd -e ${params.LOGIN}"
-                    echo "🔑 Contraseña temporal para '${params.LOGIN}': ${PASSWORD}"
+                    echo "Contraseña temporal para '${params.LOGIN}': ${PASSWORD}"
                 }
             }
         }
